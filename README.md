@@ -3,3 +3,5 @@
 # vue-store
 
 Vue 3 composition API compatible store pattern library with undo/redo
+
+Note: Still working on tests and examples.
