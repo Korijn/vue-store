@@ -1,0 +1,30 @@
+{
+  "name": "vue-store",
+  "version": "0.1.0",
+  "description": "Vue 3 composition API compatible store pattern library with undo/redo",
+  "main": "vue-store.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Korijn/vue-store.git"
+  },
+  "keywords": [
+    "vue",
+    "composition api",
+    "store",
+    "undo",
+    "redo",
+    "state",
+    "reactive"
+  ],
+  "dependencies": {
+    "vue": "^3.0.0",
+    "immer": "^7.0.0",
+    "rfc6902": "^4.0.0"
+  },
+  "author": "Korijn van Golen <korijn@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Korijn/vue-store/issues"
+  },
+  "homepage": "https://github.com/Korijn/vue-store#readme"
+}
