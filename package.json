@@ -1,5 +1,5 @@
 {
-  "name": "vue-store",
+  "name": "@korijn/vue-store",
   "version": "0.1.0",
   "description": "Vue 3 composition API compatible store pattern library with undo/redo",
   "main": "vue-store.js",
