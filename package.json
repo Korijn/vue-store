@@ -33,7 +33,8 @@
   ],
   "dependencies": {
     "immer": "^7.0.0",
-    "rfc6902": "^4.0.0"
+    "rfc6902": "^4.0.0",
+    "webpack-node-externals": "^2.5.2"
   },
   "peerDependencies": {
     "vue": "^3.0.0"
