@@ -1,12 +1,18 @@
 {
   "name": "@korijn/vue-store",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Vue 3 composition API compatible store pattern library with undo/redo",
-  "main": "vue-store.js",
+  "author": "Korijn van Golen <korijn@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Korijn/vue-store/issues"
+  },
+  "homepage": "https://github.com/Korijn/vue-store#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Korijn/vue-store.git"
   },
+  "sideEffects": false,
   "keywords": [
     "vue",
     "composition api",
@@ -16,15 +22,33 @@
     "state",
     "reactive"
   ],
+  "scripts": {
+    "build": "vue-cli-service build --target lib --name vue-store src/main.js",
+    "test": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint"
+  },
+  "main": " dist/vue-store.common.js",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
-    "vue": "^3.0.0",
     "immer": "^7.0.0",
     "rfc6902": "^4.0.0"
   },
-  "author": "Korijn van Golen <korijn@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Korijn/vue-store/issues"
+  "peerDependencies": {
+    "vue": "^3.0.0"
   },
-  "homepage": "https://github.com/Korijn/vue-store#readme"
+  "devDependencies": {
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-unit-mocha": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/eslint-config-airbnb": "^5.0.2",
+    "@vue/test-utils": "^2.0.0-0",
+    "vue": "^3.0.0",
+    "chai": "^4.1.2",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-vue": "^7.0.0-0"
+  }
 }

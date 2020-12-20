@@ -1,26 +1,32 @@
 /*
  * Generic store pattern implementation based on Vue 3 composition API and Immer
  */
-import { produceWithPatches, enablePatches, setAutoFreeze } from 'immer';
-import { computed, reactive, readonly, toRaw } from 'vue';
+import { Immer, enablePatches } from 'immer';
 import { applyPatch } from 'rfc6902';
+import {
+  computed, reactive, readonly, toRaw,
+} from 'vue';
+
+enablePatches();
+// use a local immer.js instance so we don't disrupt global state
+// where possible
+const immer = new Immer();
+immer.setAutoFreeze(false);
 
 const standardizePatches = (patches, inversePatches) => {
   // immer.js generates patches very efficiently, but
   // they are not rfc6902 compliant
   [patches, inversePatches].forEach((patchList) => {
-    patchList.forEach((patch) => {
+    for (let i = 0; i < patchList.length; i += 1) {
+      const patch = patchList[i];
       patch.path = `/${patch.path.join('/')}`;
-    });
+    }
   });
 };
 
 // createStore can be called to create a store pattern based on
 // a given initial state object and a set of mutations
 const createStore = (initialState, mutations) => {
-  enablePatches();
-  setAutoFreeze(false);
-
   // create reactive state root
   // deep clone the initial state to guarantee ownership
   const state = reactive({
@@ -37,7 +43,7 @@ const createStore = (initialState, mutations) => {
     const fn = mutations[type];
     // run the mutator with immer.js to generate
     // patches in both directions
-    const [, patches, inversePatches] = produceWithPatches(
+    const [, patches, inversePatches] = immer.produceWithPatches(
       toRaw(state.present), (draftState) => fn(draftState, rawOptions),
     );
     // standardize the patches
@@ -73,14 +79,16 @@ const createStore = (initialState, mutations) => {
   // for example `commit('addTodo', { text: 'groceries' })`
   // is mapped to `addTodo({ text: 'groceries' })`
   const mutators = {};
-  Object.keys(mutations).map((key) => {
+  Object.keys(mutations).forEach((key) => {
     mutators[key] = (options) => commit(key, options);
   });
 
   // return the public API
   return {
     state: readonly(state.present),
-    undoRedo: { canUndo, canRedo, undo, redo },
+    undoRedo: {
+      canUndo, canRedo, undo, redo,
+    },
     mutators,
   };
 };
