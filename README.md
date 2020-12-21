@@ -4,9 +4,21 @@
 
 Vue 3 composition API compatible store pattern library with undo/redo
 
-## Getting started
+## Install
 
-TODO: Document quick start & API
+```
+npm install --save @korijn/vue-store
+```
+
+## API
+
+```js
+import createStore from '@korijn/vue-store';
+
+const store = createStore(initialState, mutations);
+```
+
+TODO: Document `createStore` API
 
 ## Demo
 
