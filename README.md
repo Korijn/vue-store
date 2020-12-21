@@ -4,4 +4,10 @@
 
 Vue 3 composition API compatible store pattern library with undo/redo
 
-Note: Still working on tests and examples.
+## Getting started
+
+TODO: Document quick start & API
+
+## Demo
+
+See the demo app here: https://github.com/Korijn/vue-store-todo-app
