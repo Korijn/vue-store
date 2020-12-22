@@ -84,7 +84,7 @@ The `store` object returned by `createStore` provides the following keys:
   store.addTodo({ text: 'Buy groceries' });
   ```
 * `undo()`, `redo()` - whenever you commit a mutation to the store, immer.js is used to generate
-  patch objets which can be used to rollback the store's state, either backwards or forwards in
+  patch objects which can be used to rollback the store's state, either backwards or forwards in
   time. Calling these functions will do so, and they will return a `bool` to indicate whether or
   not the rollback was successful. In other words: `undo()` returns `false` iff the store is
   already in its initial state, and `redo()` returns `false` iff the store is already in its final
