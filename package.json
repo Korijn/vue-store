@@ -1,6 +1,6 @@
 {
   "name": "@korijn/vue-store",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Lightweight Vue 3 composition API-compatible store pattern library",
   "author": "Korijn van Golen <korijn@gmail.com>",
   "license": "ISC",
@@ -27,7 +27,14 @@
     "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
-  "main": " dist/vue-store.common.js",
+  "main": "dist/vue-store.common.js",
+  "exports": {
+    ".": {
+      "require": "./dist/vue-store.common.js",
+      "import": "./dist/vue-store.umd.js"
+    },
+    "./": "./"
+  },
   "files": [
     "dist"
   ],
