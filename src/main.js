@@ -7,7 +7,10 @@ import {
   computed, reactive, readonly, toRaw,
 } from 'vue';
 
+const RESERVED_KEYS = ['state', 'past', 'future', 'commit', 'canUndo', 'canRedo', 'undo', 'redo'];
+
 enablePatches();
+
 // use a local immer.js instance so we don't disrupt global state
 // where possible
 const immer = new Immer();
@@ -28,7 +31,6 @@ const standardizePatches = (patches, inversePatches) => {
 // a given initial state object and a set of mutations
 const createStore = (initialState, mutations) => {
   // create reactive state root
-  // deep clone the initial state to guarantee ownership
   const state = reactive({
     past: [],
     present: initialState,
@@ -80,16 +82,25 @@ const createStore = (initialState, mutations) => {
   // is mapped to `addTodo({ text: 'groceries' })`
   const mutators = {};
   Object.keys(mutations).forEach((key) => {
+    if (RESERVED_KEYS.includes(key)) {
+      console.warn(`No shorthand generated for mutation named '${key}' because of name clash`);
+      return;
+    }
     mutators[key] = (options) => commit(key, options);
   });
 
-  // return the public API
   return {
+    // state & mutation API
     state: readonly(state.present),
-    undoRedo: {
-      canUndo, canRedo, undo, redo,
-    },
-    mutators,
+    ...mutators,
+    commit,
+    // undo-redo API
+    past: readonly(state.past),
+    future: readonly(state.future),
+    canUndo,
+    canRedo,
+    undo,
+    redo,
   };
 };
 

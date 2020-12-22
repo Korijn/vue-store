@@ -1,7 +1,7 @@
 {
   "name": "@korijn/vue-store",
-  "version": "0.2.1",
-  "description": "Vue 3 composition API compatible store pattern library with undo/redo",
+  "version": "0.3.0",
+  "description": "Lightweight Vue 3 composition API-compatible store pattern library",
   "author": "Korijn van Golen <korijn@gmail.com>",
   "license": "ISC",
   "bugs": {

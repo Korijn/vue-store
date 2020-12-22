@@ -10,22 +10,22 @@ describe('createStore', () => {
     });
 
     const item = 'Assert that this was added';
-    store.mutators.addTodo({ title: item });
+    store.addTodo({ title: item });
     expect(store.state.todos).to.have.lengthOf(1);
     expect(store.state.todos).to.include(item);
-    expect(store.undoRedo.canUndo.value).to.be.true;
-    expect(store.undoRedo.canRedo.value).to.be.false;
+    expect(store.canUndo.value).to.be.true;
+    expect(store.canRedo.value).to.be.false;
 
-    expect(store.undoRedo.undo()).to.be.true;
+    expect(store.undo()).to.be.true;
     expect(store.state.todos).to.have.lengthOf(0);
     expect(store.state.todos).not.to.include(item);
-    expect(store.undoRedo.canUndo.value).to.be.false;
-    expect(store.undoRedo.canRedo.value).to.be.true;
+    expect(store.canUndo.value).to.be.false;
+    expect(store.canRedo.value).to.be.true;
 
-    expect(store.undoRedo.redo()).to.be.true;
+    expect(store.redo()).to.be.true;
     expect(store.state.todos).to.have.lengthOf(1);
     expect(store.state.todos).to.include(item);
-    expect(store.undoRedo.canUndo.value).to.be.true;
-    expect(store.undoRedo.canRedo.value).to.be.false;
+    expect(store.canUndo.value).to.be.true;
+    expect(store.canRedo.value).to.be.false;
   });
 });
