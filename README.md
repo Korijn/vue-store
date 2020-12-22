@@ -43,7 +43,6 @@ The constructor arguments are defined as follows:
   ```js
   const mutations = {
     addTodo(state, { text }) { state.todos.push({ text, status: 'open' }); },
-    removeTodo(state, { text }) { state.todos.push({ text, status: 'open' }); },
   };
   ```
   Note: mutations cannot return anything, and must be synchronous entirely.
