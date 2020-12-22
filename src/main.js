@@ -7,8 +7,7 @@ import {
   computed, reactive, readonly, toRaw,
 } from 'vue';
 
-const RESERVED_KEYS = ['state', 'past', 'future', 'commit', 'canUndo', 'canRedo', 'undo', 'redo'];
-
+// enable immer.js patch support
 enablePatches();
 
 // use a local immer.js instance so we don't disrupt global state
@@ -77,22 +76,9 @@ const createStore = (initialState, mutations) => {
     return true;
   };
 
-  // create shorthand commit functions for mutations
-  // for example `commit('addTodo', { text: 'groceries' })`
-  // is mapped to `addTodo({ text: 'groceries' })`
-  const mutators = {};
-  Object.keys(mutations).forEach((key) => {
-    if (RESERVED_KEYS.includes(key)) {
-      console.warn(`No shorthand generated for mutation named '${key}' because of name clash`);
-      return;
-    }
-    mutators[key] = (options) => commit(key, options);
-  });
-
-  return {
+  const store = {
     // state & mutation API
     state: readonly(state.present),
-    ...mutators,
     commit,
     // undo-redo API
     past: readonly(state.past),
@@ -102,6 +88,19 @@ const createStore = (initialState, mutations) => {
     undo,
     redo,
   };
+
+  // create shorthand commit functions for mutations
+  // for example `commit('addTodo', { text: 'groceries' })`
+  // is mapped to `addTodo({ text: 'groceries' })`
+  Object.keys(mutations).forEach((key) => {
+    if (key in store) {
+      console.warn(`[WARNING @korijn/vue-store] No shorthand generated for mutation '${key}' because of name clash`);
+      return;
+    }
+    store[key] = (options) => commit(key, options);
+  });
+
+  return store;
 };
 
 export default createStore;

@@ -153,4 +153,4 @@ This way, developers only need to write forward mutation callbacks, and since al
 ## Thank you
 
 Thank you for reading this and checking out my library. If you have any questions, bug reports, or
-feature requests, feel to create an issue here.
+feature requests, feel free to create an issue.
