@@ -109,6 +109,10 @@ The `store` object returned by `createStore` provides the following keys:
 
 You can see a Todo MVC application using a globally instanced store at the following URL:
 
+https://korijn.dev/vue-store-todo-app/index.html
+
+Source code:
+
 https://github.com/Korijn/vue-store-todo-app
 
 In particular the following files will be of interest for your review:
