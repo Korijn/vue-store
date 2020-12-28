@@ -8,4 +8,14 @@ module.exports = {
     },
     externals: [nodeExternals()],
   },
+  chainWebpack: (config) => {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => {
+        // eslint-disable-next-line no-param-reassign
+        options.isServerBuild = false;
+        return options;
+      });
+  },
 };

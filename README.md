@@ -18,6 +18,42 @@ that is on par with VueX in terms of features:
 npm install --save @korijn/vue-store
 ```
 
+## Quick start / minimal example
+
+This example briefly demonstrates a locally scoped store with out-of-the-box undo/redo functionality. Read on to learn more about the options provided.
+
+```html
+<template>
+  <div>
+    <p>Count: {{ state.count }}</p>
+    <p>
+      <button @click="increment">Increment</button>
+      <button @click="undo" :disabled="!canUndo">Undo</button>
+      <button @click="redo" :disabled="!canRedo">Redo</button>
+    </p>
+  </div>
+</template>
+
+<script>
+import createStore from '@korijn/vue-store';
+
+export default {
+  name: 'Counter',
+  setup() {
+    const store = createStore({
+      count: 0,
+    }, {
+      increment(state) {
+        state.count += 1;
+      },
+    });
+    return { ...store };
+  },
+};
+</script>
+
+```
+
 ## Creating a store instance
 
 This library provides a single function `createStore` with the following signature:
