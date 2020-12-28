@@ -1,4 +1,5 @@
 [![npm version](https://raster.shields.io/npm/v/@korijn/vue-store.png)](https://www.npmjs.com/package/@korijn/vue-store)
+![build status](https://img.shields.io/github/workflow/status/Korijn/vue-store/ci/master)
 
 # vue-store
 
