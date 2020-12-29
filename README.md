@@ -1,5 +1,5 @@
-[![npm version](https://raster.shields.io/npm/v/@korijn/vue-store.png)](https://www.npmjs.com/package/@korijn/vue-store)
-[![build status](https://img.shields.io/github/workflow/status/Korijn/vue-store/ci/master)](https://github.com/Korijn/vue-store/actions?query=workflow%3Aci+branch%3Amaster)
+[![npm](https://img.shields.io/npm/v/@korijn/vue-store)](https://www.npmjs.com/package/@korijn/vue-store)
+[![ci](https://img.shields.io/github/workflow/status/Korijn/vue-store/ci/master)](https://github.com/Korijn/vue-store/actions?query=workflow%3Aci+branch%3Amaster)
 
 # vue-store
 
