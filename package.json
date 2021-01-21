@@ -39,7 +39,7 @@
     "dist"
   ],
   "dependencies": {
-    "immer": "^7.0.0",
+    "immer": "^8.0.1",
     "rfc6902": "^4.0.0"
   },
   "peerDependencies": {
