@@ -45,7 +45,8 @@ const createStore = (initialState, mutations) => {
     // run the mutator with immer.js to generate
     // patches in both directions
     const [, patches, inversePatches] = immer.produceWithPatches(
-      toRaw(state.present), (draftState) => fn(draftState, rawOptions),
+      toRaw(state.present),
+      (draftState) => fn(draftState, rawOptions),
     );
     // standardize the patches
     standardizePatches(patches, inversePatches);
@@ -94,6 +95,7 @@ const createStore = (initialState, mutations) => {
   // is mapped to `addTodo({ text: 'groceries' })`
   Object.keys(mutations).forEach((key) => {
     if (key in store) {
+      // eslint-disable-next-line no-console
       console.warn(`[WARNING @korijn/vue-store] No shorthand generated for mutation '${key}' because of name clash`);
       return;
     }

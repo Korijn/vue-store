@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <h1>Counting component</h1>
+    <h1>StoreCounter component</h1>
     <p>Count: {{ state.count }}</p>
     <div>
       <button id="increment" @click="increment">Increment</button><br>
@@ -14,7 +14,7 @@
 import createStore from '@/main';
 
 export default {
-  name: 'App',
+  name: 'StoreCounter',
   setup() {
     const store = createStore({
       count: 0,

@@ -1,10 +1,10 @@
-import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
-import Counting from './Counting.vue';
+import { expect } from 'chai';
+import StoreCounter from './StoreCounter.vue';
 
-describe('counting', () => {
+describe('StoreCounter.vue', () => {
   it('counts', async () => {
-    const wrapper = mount(Counting);
+    const wrapper = mount(StoreCounter);
 
     const text = wrapper.find('p');
     const increment = wrapper.find('#increment');
